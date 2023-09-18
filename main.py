@@ -62,4 +62,5 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
 
             elif val == 4:             # Logga ut användaren.
                 inloggad_konto = None
-huvudmeny()
+huvudmeny() # Kör huvudmenyn när scriptet körs.
+
