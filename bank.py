@@ -13,8 +13,9 @@ class Bank: # Definiera Bank-klassen.
         # Returnera det nya kontonumret.
         return kontonummer
 
-    def logga_in(self, kontonummer, pin):
-        konto = self.konton.get(kontonummer)
-        if konto and konto.pin == pin:
+    def logga_in(self, kontonummer, pin):     # Funktion för att logga in på ett befintligt konto.
+        konto = self.konton.get(kontonummer)         # Hämta konto baserat på givet kontonummer.
+        if konto and konto.pin == pin:         # Kontrollera om kontot existerar och om PIN-koden stämmer överens.
             return konto
-        return None
+        return None         # Om inloggningen misslyckas, returnera None.
+
