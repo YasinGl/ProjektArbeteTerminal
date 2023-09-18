@@ -70,4 +70,8 @@ def huvudmeny():
             print("4. Logga ut")
             val = int(input("Vänligen välj ett alternativ (1-4): "))
 
+            if val == 1:
+                belopp = float(input("Ange belopp att sätta in: "))
+                inloggad_konto.insattning(belopp)
+                print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()}")
 
