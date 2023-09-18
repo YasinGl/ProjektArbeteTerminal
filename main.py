@@ -1,3 +1,5 @@
+from bank import Bank
+
 def huvudmeny():
     bank = Bank()
     inloggad_konto = None
