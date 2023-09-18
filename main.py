@@ -1,7 +1,7 @@
 from bank import Bank # Importera Bank-klassen från bank-modulen.
 
 
-def huvudmeny():
+def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
     bank = Bank()
     inloggad_konto = None
 
