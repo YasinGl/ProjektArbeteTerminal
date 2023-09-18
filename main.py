@@ -46,3 +46,20 @@ def huvudmeny():
             print("3. Avsluta")
             val = int(input("Vänligen välj ett alternativ (1-3): "))
 
+            if val == 1:
+                kontonummer = int(input("Ange ditt kontonummer: "))
+                pin = input("Ange ditt lösenord: ")
+                inloggad_konto = bank.logga_in(kontonummer, pin)
+                if not inloggad_konto:
+                    print("Felaktiga inloggningsuppgifter!")
+
+            elif val == 2:
+                namn = input("Ange ditt namn: ")
+                pin = input("Skapa ett lösenord: ")
+                kontonummer = bank.skapa_konto(namn, pin)
+                print(f"Ditt kontonummer är: {kontonummer}")
+
+            elif val == 3:
+                break
+
+
