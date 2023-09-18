@@ -83,3 +83,9 @@ def huvudmeny():
                 else:
                     print(f"Ditt nya saldo är: {resultat}")
 
+            elif val == 3:
+                print(f"Ditt saldo är: {inloggad_konto.visa_saldo()}")
+
+            elif val == 4:
+                inloggad_konto = None
+huvudmeny()
