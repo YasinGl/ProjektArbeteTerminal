@@ -62,4 +62,3 @@ def huvudmeny():
             elif val == 3:
                 break
 
-
