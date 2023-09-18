@@ -8,7 +8,7 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
 
     while True:     # Huvudloop för att köra programmet kontinuerligt.
         if not inloggad_konto:         # Om ingen användare är inloggad, visa huvudmenyn.
-            print("Välkommen till YASIN Bank!")
+            print("Välkommen till Y Bank!")
             print("1. Logga in")
             print("2. Skapa nytt konto")
             print("3. Avsluta")
