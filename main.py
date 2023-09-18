@@ -53,7 +53,7 @@ def huvudmeny():
                     print("Ogiltigt kontonummer. Ange endast siffror.")
                     continue
 
-                pin = input("Ange ditt lösenord: ")2
+                pin = input("Ange ditt lösenord: ")
                 inloggad_konto = bank.logga_in(kontonummer, pin)
                 if not inloggad_konto:
                     print("Felaktiga inloggningsuppgifter!")
