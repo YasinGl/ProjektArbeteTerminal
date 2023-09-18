@@ -47,11 +47,17 @@ def huvudmeny():
             val = int(input("Vänligen välj ett alternativ (1-3): "))
 
             if val == 1:
-                kontonummer = int(input("Ange ditt kontonummer: "))
-                pin = input("Ange ditt lösenord: ")
+                try:
+                    kontonummer = int(input("Ange ditt kontonummer: "))
+                except ValueError:
+                    print("Ogiltigt kontonummer. Ange endast siffror.")
+                    continue
+
+                pin = input("Ange ditt lösenord: ")2
                 inloggad_konto = bank.logga_in(kontonummer, pin)
                 if not inloggad_konto:
                     print("Felaktiga inloggningsuppgifter!")
+
 
             elif val == 2:
                 namn = input("Ange ditt namn: ")
