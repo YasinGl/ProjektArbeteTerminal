@@ -8,11 +8,11 @@ class BankKonto: # Definiera klassen BankKonto.
         self.saldo += belopp
         return self.saldo
 
-    def uttag(self, belopp):
-        if belopp > self.saldo:
-            return "Inte tillräckligt med pengar på kontot!"
-        self.saldo -= belopp
-        return self.saldo
+    def uttag(self, belopp):     # Metod för att göra ett uttag från kontot.
+        if belopp > self.saldo:         # Kontrollera om det angivna beloppet överstiger det aktuella saldot.
+            return "Inte tillräckligt med pengar på kontot!"             # Om det inte finns tillräckligt med pengar, returnera ett felmeddelande.
+        self.saldo -= belopp         # Dra bort det angivna beloppet från saldot.
+        return self.saldo         # Returnera det uppdaterade saldot.
 
     def visa_saldo(self):     # Metod för att visa det aktuella saldot på kontot.
         return self.saldo
