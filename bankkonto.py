@@ -4,9 +4,9 @@ class BankKonto: # Definiera klassen BankKonto.
         self.pin = pin # Pin-kod för kontot.
         self.saldo = saldo # Det aktuella saldot på kontot.
 
-    def insattning(self, belopp):
-        self.saldo += belopp
-        return self.saldo
+    def insattning(self, belopp):     # Metod för att sätta in pengar på kontot.
+        self.saldo += belopp # Lägg till det angivna beloppet till saldot.
+        return self.saldo # Returnera det uppdaterade saldot
 
     def uttag(self, belopp):     # Metod för att göra ett uttag från kontot.
         if belopp > self.saldo:         # Kontrollera om det angivna beloppet överstiger det aktuella saldot.
