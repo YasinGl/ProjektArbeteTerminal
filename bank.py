@@ -8,7 +8,7 @@ class Bank: # Definiera Bank-klassen.
 
     def skapa_konto(self, namn, pin):     # Funktion för att skapa ett nytt konto.
         # Generera ett nytt kontonummer baserat på antalet befintliga konton.
-        kontonummer = len(self.konton) + 1
+        kontonummer = len(self.konton) + 1         # Skapa ett nytt BankKonto-objekt och lagra det i dictionary med kontonummer som nyckel.
         self.konton[kontonummer] = BankKonto(namn, pin)
         # Returnera det nya kontonumret.
         return kontonummer
