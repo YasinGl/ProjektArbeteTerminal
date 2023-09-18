@@ -62,3 +62,12 @@ def huvudmeny():
             elif val == 3:
                 break
 
+        else:
+            print(f"Välkommen {inloggad_konto.namn}!")
+            print("1. Sätt in pengar")
+            print("2. Ta ut pengar")
+            print("3. Visa saldo")
+            print("4. Logga ut")
+            val = int(input("Vänligen välj ett alternativ (1-4): "))
+
+
