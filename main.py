@@ -75,3 +75,11 @@ def huvudmeny():
                 inloggad_konto.insattning(belopp)
                 print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()}")
 
+            elif val == 2:
+                belopp = float(input("Ange belopp att ta ut: "))
+                resultat = inloggad_konto.uttag(belopp)
+                if isinstance(resultat, str):
+                    print(resultat)
+                else:
+                    print(f"Ditt nya saldo är: {resultat}")
+
