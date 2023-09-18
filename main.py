@@ -52,7 +52,7 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
             elif val == 2:              # Ta ut pengar-valet.
                 belopp = float(input("Ange belopp att ta ut: "))
                 resultat = inloggad_konto.uttag(belopp)
-                if isinstance(resultat, str):
+                if isinstance(resultat, str):  # Kontrollera om uttaget returnerade ett felmeddelande.
                     print(resultat)
                 else:
                     print(f"Ditt nya saldo är: {resultat}")
