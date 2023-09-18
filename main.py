@@ -57,9 +57,9 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
                 else:
                     print(f"Ditt nya saldo är: {resultat}")
 
-            elif val == 3:
+            elif val == 3:             # Visa saldo-valet.
                 print(f"Ditt saldo är: {inloggad_konto.visa_saldo()}")
 
-            elif val == 4:
+            elif val == 4:             # Logga ut användaren.
                 inloggad_konto = None
 huvudmeny()
