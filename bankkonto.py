@@ -14,5 +14,5 @@ class BankKonto: # Definiera klassen BankKonto.
         self.saldo -= belopp
         return self.saldo
 
-    def visa_saldo(self):
+    def visa_saldo(self):     # Metod för att visa det aktuella saldot på kontot.
         return self.saldo
