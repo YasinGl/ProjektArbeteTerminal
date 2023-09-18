@@ -1,5 +1,5 @@
 class BankKonto:
-    def __init__(self, namn, pin, saldo=0):
+    def __init__(self, namn, pin, saldo = 0):
         self.namn = namn
         self.pin = pin
         self.saldo = saldo
@@ -15,4 +15,21 @@ class BankKonto:
         return self.saldo
 
     def visa_saldo(self):
-        return self.saldo #test
+        return self.saldo
+
+
+class Bank:
+    def __init__(self):
+        self.konton = {}
+
+    def skapa_konto(self, namn, pin):
+        kontonummer = len(self.konton) + 1
+        self.konton[kontonummer] = BankKonto(namn, pin)
+        return kontonummer
+
+    def logga_in(self, kontonummer, pin):
+        konto = self.konton.get(kontonummer)
+        if konto and konto.pin == pin:
+            return konto
+        return None
+
