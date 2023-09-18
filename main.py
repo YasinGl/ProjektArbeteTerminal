@@ -1,4 +1,5 @@
-from bank import Bank
+from bank import Bank # Importera Bank-klassen från bank-modulen.
+
 
 def huvudmeny():
     bank = Bank()
