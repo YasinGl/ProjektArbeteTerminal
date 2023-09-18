@@ -2,8 +2,9 @@ from bank import Bank # Importera Bank-klassen från bank-modulen.
 
 
 def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
-    bank = Bank()
-    inloggad_konto = None
+    bank = Bank()     # Initiera Bank-objektet.
+    inloggad_konto = None     # Definiera en variabel för att hålla reda på inloggad användare.
+
 
     while True:
         if not inloggad_konto:
