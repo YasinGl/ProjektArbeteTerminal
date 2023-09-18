@@ -33,3 +33,16 @@ class Bank:
             return konto
         return None
 
+
+def huvudmeny():
+    bank = Bank()
+    inloggad_konto = None
+
+    while True:
+        if not inloggad_konto:
+            print("Välkommen till YASIN Bank!")
+            print("1. Logga in")
+            print("2. Skapa nytt konto")
+            print("3. Avsluta")
+            val = int(input("Vänligen välj ett alternativ (1-3): "))
+
