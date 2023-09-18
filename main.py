@@ -15,4 +15,4 @@ class BankKonto:
         return self.saldo
 
     def visa_saldo(self):
-        return self.saldo
+        return self.saldo #test
