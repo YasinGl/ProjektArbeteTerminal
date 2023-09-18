@@ -6,18 +6,18 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
     inloggad_konto = None     # Definiera en variabel för att hålla reda på inloggad användare.
 
 
-    while True:
-        if not inloggad_konto:
+    while True:     # Huvudloop för att köra programmet kontinuerligt.
+        if not inloggad_konto:         # Om ingen användare är inloggad, visa huvudmenyn.
             print("Välkommen till YASIN Bank!")
             print("1. Logga in")
             print("2. Skapa nytt konto")
             print("3. Avsluta")
             val = int(input("Vänligen välj ett alternativ (1-3): "))
 
-            if val == 1:
+            if val == 1:             # Logga in-valet.
                 try:
                     kontonummer = int(input("Ange ditt kontonummer: "))
-                except ValueError:
+                except ValueError:  # Hantera felaktig inmatning.
                     print("Ogiltigt kontonummer. Ange endast siffror.")
                     continue
 
@@ -27,16 +27,16 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
                     print("Felaktiga inloggningsuppgifter!")
 
 
-            elif val == 2:
+            elif val == 2:             # Skapa nytt konto-valet.
                 namn = input("Ange ditt namn: ")
                 pin = input("Skapa ett lösenord: ")
                 kontonummer = bank.skapa_konto(namn, pin)
                 print(f"Ditt kontonummer är: {kontonummer}")
 
-            elif val == 3:
+            elif val == 3:             # Avsluta programmet.
                 break
 
-        else:
+        else:         # Om användaren är inloggad, visa alternativen för den inloggade användaren.
             print(f"Välkommen {inloggad_konto.namn}!")
             print("1. Sätt in pengar")
             print("2. Ta ut pengar")
@@ -44,12 +44,12 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
             print("4. Logga ut")
             val = int(input("Vänligen välj ett alternativ (1-4): "))
 
-            if val == 1:
+            if val == 1:             # Sätt in pengar-valet.
                 belopp = float(input("Ange belopp att sätta in: "))
                 inloggad_konto.insattning(belopp)
                 print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()}")
 
-            elif val == 2:
+            elif val == 2:              # Ta ut pengar-valet.
                 belopp = float(input("Ange belopp att ta ut: "))
                 resultat = inloggad_konto.uttag(belopp)
                 if isinstance(resultat, str):
