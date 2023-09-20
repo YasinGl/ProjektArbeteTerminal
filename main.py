@@ -1,11 +1,12 @@
 from bank import Bank # Importera Bank-klassen från bank-modulen.
 
+from bank import Bank # Importera Bank-klassen från bank-modulen.
+
 class TerminalColors:
     OKBLUE = '\033[94m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
-
-# from bank import Bank # Importera Bank-klassen från bank-modulen.
+    OKGREEN = '\033[92m'
 
 def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
     bank = Bank()  # Initiera Bank-objektet.
@@ -19,26 +20,26 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
             print("2. Skapa nytt konto")
             print("3. Avsluta")
             try:
-                val = int(input("Vänligen välj ett alternativ (1-3): ")) # Kollar så att  skriver in sitt val
+                val = int(input(f"{TerminalColors.OKBLUE}Vänligen välj ett alternativ (1-3):"))
             except ValueError:  # KOllar invalid input
-                print(f"{TerminalColors.FAIL}Ogiltigt val. Ange ett nummer mellan 1 och 3.{TerminalColors.ENDC}")
+                print(f"{TerminalColors.FAIL}Ogiltigt val. Ange ett nummer mellan 1 och 3.")
                 continue  # går tillbaka till loopen och kör om
 
             if val == 1:             # Logga in-valet.
                 try:
-                    kontonummer = int(input("Ange ditt kontonummer: "))
+                    kontonummer = int(input(f"{TerminalColors.OKGREEN}Ange ditt kontonummer: {TerminalColors.ENDC}"))
                 except ValueError:  # Hantera felaktig inmatning.
                     print(f"{TerminalColors.FAIL}Ogiltigt kontonummer. Ange endast siffror.{TerminalColors.ENDC}")
                     continue
 
-                pin = input("Ange ditt lösenord: ")
+                pin = input(f"{TerminalColors.OKGREEN}Ange ditt lösenord: {TerminalColors.ENDC}")
                 inloggad_konto = bank.logga_in(kontonummer, pin)
                 if not inloggad_konto:
-                    print(f"{TerminalColors.FAIL}Felaktiga inloggningsuppgifter!{TerminalColors.ENDC}")
+                    print(f"{TerminalColors.FAIL}Felaktiga inloggningsuppgifter!")
 
             elif val == 2:             # Skapa nytt konto-valet.
-                namn = input("Ange ditt namn: ")
-                pin = input("Skapa ett lösenord: ")
+                namn = input(f"{TerminalColors.OKGREEN}Ange ditt namn: {TerminalColors.ENDC}")
+                pin = input(f"{TerminalColors.OKGREEN}Skapa ett lösenord: {TerminalColors.ENDC}")
                 kontonummer = bank.skapa_konto(namn, pin)
                 print(f"Ditt kontonummer är: {kontonummer}")
 
@@ -51,16 +52,16 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
             print("2. Ta ut pengar")
             print("3. Visa saldo")
             print("4. Logga ut")
-            val = int(input("Vänligen välj ett alternativ (1-4): "))
+            val = int(input(f"{TerminalColors.OKGREEN}Vänligen välj ett alternativ (1-4): {TerminalColors.ENDC}"))
 
             if val == 1:             # Sätt in pengar-valet.
-                belopp = float(input("Ange belopp att sätta in: "))
+                belopp = float(input(f"{TerminalColors.OKGREEN}Ange belopp att sätta in: {TerminalColors.ENDC}"))
                 inloggad_konto.insattning(belopp)
                 print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()} :-")
                 bank.spara_konton()
 
             elif val == 2:              # Ta ut pengar-valet.
-                belopp = float(input("Ange belopp att ta ut: "))
+                belopp = float(input(f"{TerminalColors.OKGREEN}Ange belopp att ta ut: {TerminalColors.ENDC}"))
                 resultat = inloggad_konto.uttag(belopp)
                 if isinstance(resultat, str):  # Kontrollera om uttaget returnerade ett felmeddelande.
                     print(f"{TerminalColors.FAIL}{resultat}{TerminalColors.ENDC}")
