@@ -1,14 +1,15 @@
 from bank import Bank # Importera Bank-klassen från bank-modulen.
 
+def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
+    bank = Bank()  # Initiera Bank-objektet.
+    bank.ladda_konton()  # Ladda befintliga konton från konton.txt vid programstart.
+    inloggad_konto = None  # Definiera en variabel för att hålla reda på inloggad användare.
 
-def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
-    bank = Bank()     # Initiera Bank-objektet.
-    inloggad_konto = None     # Definiera en variabel för att hålla reda på inloggad användare.
 
 
     while True:     # Huvudloop för att köra programmet kontinuerligt.
         if not inloggad_konto:         # Om ingen användare är inloggad, visa huvudmenyn.
-            print("Välkommen till Y Bank!")
+            print("Välkommen till Yasins Bank!")
             print("1. Logga in")
             print("2. Skapa nytt konto")
             print("3. Avsluta")
@@ -47,7 +48,8 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
             if val == 1:             # Sätt in pengar-valet.
                 belopp = float(input("Ange belopp att sätta in: "))
                 inloggad_konto.insattning(belopp)
-                print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()}")
+                print(f"Ditt nya saldo är: {inloggad_konto.visa_saldo()} :-")
+                bank.spara_konton()
 
             elif val == 2:              # Ta ut pengar-valet.
                 belopp = float(input("Ange belopp att ta ut: "))
@@ -55,12 +57,14 @@ def huvudmeny(): # Definiera huvudfunktionaliteten för programmet.
                 if isinstance(resultat, str):  # Kontrollera om uttaget returnerade ett felmeddelande.
                     print(resultat)
                 else:
-                    print(f"Ditt nya saldo är: {resultat}")
+                    print(f"Ditt nya saldo är: {resultat} :-")
+                    bank.spara_konton()
 
             elif val == 3:             # Visa saldo-valet.
-                print(f"Ditt saldo är: {inloggad_konto.visa_saldo()}")
+                print(f"Ditt saldo är: {inloggad_konto.visa_saldo()} :-")
 
             elif val == 4:             # Logga ut användaren.
                 inloggad_konto = None
+                print("Du har loggat ut, tack för att du avänder Yasins Bank")
 huvudmeny() # Kör huvudmenyn när scriptet körs.
 
