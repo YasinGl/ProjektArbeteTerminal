@@ -57,7 +57,10 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
             print(f"{TerminalColors.CYAN}2. Ta ut pengar{TerminalColors.ENDC}")
             print(f"{TerminalColors.CYAN}3. Visa saldo{TerminalColors.ENDC}")
             print(f"{TerminalColors.CYAN}4. Logga ut{TerminalColors.ENDC}")
-            val = int(input(f"{TerminalColors.OKBLUE}Vänligen välj ett alternativ (1-4): {TerminalColors.ENDC}"))
+            try:
+                val = int(input(f"{TerminalColors.OKBLUE}Vänligen välj ett alternativ (1-4): {TerminalColors.ENDC}"))
+            except ValueError:
+
 
             if val == 1:             # Sätt in pengar-valet.
                 belopp = float(input(f"{TerminalColors.OKGREEN}Ange belopp att sätta in: {TerminalColors.ENDC}"))
