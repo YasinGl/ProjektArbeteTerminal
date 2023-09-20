@@ -1,21 +1,44 @@
-from bankkonto import BankKonto # Importera BankKonto-klassen från bankkonto-modulen.
+import self
 
+from bankkonto import BankKonto  # Importera BankKonto-klassen från bankkonto-modulen.
 
-class Bank: # Definiera Bank-klassen.
-    # Initiera Bank-objektet med en tom dictionary för att lagra bankkonton.
+class Bank:  # Definiera Bank-klassen.
     def __init__(self):
         self.konton = {}
+        # Ladda konton kommer att kallas direkt i main.py, så ingen anledning att anropa det här.
 
-    def skapa_konto(self, namn, pin):     # Funktion för att skapa ett nytt konto.
-        # Generera ett nytt kontonummer baserat på antalet befintliga konton.
-        kontonummer = len(self.konton) + 1         # Skapa ett nytt BankKonto-objekt och lagra det i dictionary med kontonummer som nyckel.
+    def skapa_konto(self, namn, pin):
+        kontonummer = len(self.konton) + 1
         self.konton[kontonummer] = BankKonto(namn, pin)
-        # Returnera det nya kontonumret.
+
+        # Automatiskt spara efter att ett konto har skapats
+        self.spara_konton()
         return kontonummer
 
-    def logga_in(self, kontonummer, pin):     # Funktion för att logga in på ett befintligt konto.
-        konto = self.konton.get(kontonummer)         # Hämta konto baserat på givet kontonummer.
-        if konto and konto.pin == pin:         # Kontrollera om kontot existerar och om PIN-koden stämmer överens.
+    def logga_in(self, kontonummer, pin):
+        konto = self.konton.get(kontonummer)
+        if konto and konto.pin == pin:
             return konto
-        return None         # Om inloggningen misslyckas, returnera None.
+        return None
+
+    def ladda_konton(self):
+        print("Försöker ladda information...")  # Lägg till detta print-uttryck här.
+
+        try:
+            with open("konton.txt", "r") as f:
+                for rad in f:
+                    konto_nummer, namn, pin, saldo = rad.strip().split(",")
+                    self.konton[int(konto_nummer)] = BankKonto(namn, pin, float(saldo))
+            print("Information laddad.")  # Lägg till detta print-uttryck här.
+        except FileNotFoundError:
+            print("konton.txt finns inte.")  # Lägg till detta print-uttryck här.
+
+    def spara_konton(self):
+        print("Försöker spara konton...")  # Lägg till detta print-uttryck här.
+
+        with open("konton.txt", "w") as f:
+            for konto_nummer, konto in self.konton.items():
+                f.write(f"{konto_nummer},{konto.namn},{konto.pin},{konto.saldo}\n")
+
+        print("Konton sparad.")  # Lägg till detta print-uttryck här.
 
