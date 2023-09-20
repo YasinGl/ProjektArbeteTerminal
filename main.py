@@ -18,7 +18,11 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
             print("1. Logga in")
             print("2. Skapa nytt konto")
             print("3. Avsluta")
-            val = int(input("Vänligen välj ett alternativ (1-3): "))
+            try:
+                val = int(input("Vänligen välj ett alternativ (1-3): ")) # Kollar så att  skriver in sitt val
+            except ValueError:  # KOllar invalid input
+                print(f"{TerminalColors.FAIL}Ogiltigt val. Ange ett nummer mellan 1 och 3.{TerminalColors.ENDC}")
+                continue  # går tillbaka till loopen och kör om
 
             if val == 1:             # Logga in-valet.
                 try:
