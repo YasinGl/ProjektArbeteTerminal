@@ -1,4 +1,5 @@
 from bank import Bank # Importera Bank-klassen från bank-modulen.
+import getpass # ordnar så att inmating som inte blir synlig
 
 class TerminalColors:
     OKBLUE = '\033[94m'
@@ -28,7 +29,8 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
 
             if val == 1:             # Logga in-valet.
                 try:
-                    kontonummer = int(input(f"{TerminalColors.OKBLUE}Ange ditt kontonummer: {TerminalColors.ENDC}"))
+                    kontonummer = getpass.getpass(f"{TerminalColors.OKBLUE}Ange ditt kontonummer: {TerminalColors.ENDC}")
+                    kontonummer = int(kontonummer)
                 except ValueError:  # Hantera felaktig inmatning.
                     print(f"{TerminalColors.FAIL}Ogiltigt kontonummer. Ange endast siffror.{TerminalColors.ENDC}")
                     continue
