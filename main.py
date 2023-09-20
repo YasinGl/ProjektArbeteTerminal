@@ -1,15 +1,20 @@
 from bank import Bank # Importera Bank-klassen från bank-modulen.
 
+class TerminalColors:
+    OKBLUE = '\033[94m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+
+# from bank import Bank # Importera Bank-klassen från bank-modulen.
+
 def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
     bank = Bank()  # Initiera Bank-objektet.
     bank.ladda_konton()  # Ladda befintliga konton från konton.txt vid programstart.
     inloggad_konto = None  # Definiera en variabel för att hålla reda på inloggad användare.
 
-
-
     while True:     # Huvudloop för att köra programmet kontinuerligt.
         if not inloggad_konto:         # Om ingen användare är inloggad, visa huvudmenyn.
-            print("Välkommen till Yasins Bank!")
+            print(f"{TerminalColors.OKBLUE}Välkommen till Yasins Bank!{TerminalColors.ENDC}")
             print("1. Logga in")
             print("2. Skapa nytt konto")
             print("3. Avsluta")
@@ -19,14 +24,13 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
                 try:
                     kontonummer = int(input("Ange ditt kontonummer: "))
                 except ValueError:  # Hantera felaktig inmatning.
-                    print("Ogiltigt kontonummer. Ange endast siffror.")
+                    print(f"{TerminalColors.FAIL}Ogiltigt kontonummer. Ange endast siffror.{TerminalColors.ENDC}")
                     continue
 
                 pin = input("Ange ditt lösenord: ")
                 inloggad_konto = bank.logga_in(kontonummer, pin)
                 if not inloggad_konto:
-                    print("Felaktiga inloggningsuppgifter!")
-
+                    print(f"{TerminalColors.FAIL}Felaktiga inloggningsuppgifter!{TerminalColors.ENDC}")
 
             elif val == 2:             # Skapa nytt konto-valet.
                 namn = input("Ange ditt namn: ")
@@ -55,7 +59,7 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
                 belopp = float(input("Ange belopp att ta ut: "))
                 resultat = inloggad_konto.uttag(belopp)
                 if isinstance(resultat, str):  # Kontrollera om uttaget returnerade ett felmeddelande.
-                    print(resultat)
+                    print(f"{TerminalColors.FAIL}{resultat}{TerminalColors.ENDC}")
                 else:
                     print(f"Ditt nya saldo är: {resultat} :-")
                     bank.spara_konton()
@@ -65,6 +69,6 @@ def huvudmeny():  # Definiera huvudfunktionaliteten för programmet.
 
             elif val == 4:             # Logga ut användaren.
                 inloggad_konto = None
-                print("Du har loggat ut, tack för att du avänder Yasins Bank")
-huvudmeny() # Kör huvudmenyn när scriptet körs.
+                print(f"{TerminalColors.OKBLUE}Du har loggat ut, tack för att du använder Yasins Bank{TerminalColors.ENDC}")
 
+huvudmeny() # Kör huvudmenyn när scriptet körs.
