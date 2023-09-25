@@ -1,7 +1,8 @@
-import self
-
 from bankkonto import BankKonto  # Importera BankKonto-klassen från bankkonto-modulen.
 
+
+class TerminalColors:
+    FAIL = '\033[91m'
 class Bank:  # Definiera Bank-klassen.
     def __init__(self):
         self.konton = {}
@@ -22,23 +23,23 @@ class Bank:  # Definiera Bank-klassen.
         return None
 
     def ladda_konton(self):
-        print("Försöker ladda information från databas...")  # Lägg till detta print-uttryck här.
+         # print("Försöker ladda information från databas...")  # Lägg till detta print-uttryck här.
 
         try:
             with open("konton.txt", "r") as f:
                 for rad in f:
                     konto_nummer, namn, pin, saldo = rad.strip().split(",")
                     self.konton[int(konto_nummer)] = BankKonto(namn, pin, float(saldo))
-            print("Information laddad från databas.")  # Lägg till detta print-uttryck här.
+             # print("Information laddad från databas.")  # Lägg till detta print-uttryck här.
         except FileNotFoundError:
             print("konton.txt finns inte.")  # Lägg till detta print-uttryck här.
 
     def spara_konton(self):
-        print("Försöker spara konton i databasen...")  # Lägg till detta print-uttryck här.
+        print(f"{TerminalColors.FAIL}Försöker spara i databasen... ")  # Lägg till detta print-uttryck här.
 
         with open("konton.txt", "w") as f:
             for konto_nummer, konto in self.konton.items():
                 f.write(f"{konto_nummer},{konto.namn},{konto.pin},{konto.saldo}\n")
 
-        print("Konton sparad i databasen.")  # Lägg till detta print-uttryck här.
+        print("Sparad i databasen.")  # Lägg till detta print-uttryck här.
 
