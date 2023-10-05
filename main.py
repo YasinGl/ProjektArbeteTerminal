@@ -1,4 +1,4 @@
-from bank import Bank  # Importera Bank-klassen från bank-modulen.
+from bank import Bank  # Importera Bank-klassen från bank-modulen
 import stdiomask  # först hade jag getpass men då märke jag att det blev helt dolt
 
 class TerminalColors:
