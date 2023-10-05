@@ -1,5 +1,5 @@
 from bank import Bank  # Importera Bank-klassen från bank-modulen
-import stdiomask  # först hade jag getpass men då märke jag att det blev helt dolt
+import stdiomask  # först hade jag getpass men då märke jag att det blev helt dolt så jag bytte ut den mot mask
 
 class TerminalColors:
     HEADER = '\033[95m'
