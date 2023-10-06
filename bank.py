@@ -35,7 +35,7 @@ class Bank:  # Definiera Bank-klassen.
             print("konton.txt finns inte.")  # Lägg till detta print-uttryck här.
 
     def spara_konton(self):
-        print(f"{TerminalColors.FAIL}Försöker spara i databasen... ")  # Lägg till detta print-uttryck här.
+        print(f"{TerminalColors.FAIL}Laddar... ")  # Lägg till detta print-uttryck här.
 
         with open("konton.txt", "w") as f:
             for konto_nummer, konto in self.konton.items():
